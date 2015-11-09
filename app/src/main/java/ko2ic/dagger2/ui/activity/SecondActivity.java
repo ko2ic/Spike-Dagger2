@@ -2,7 +2,6 @@ package ko2ic.dagger2.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +11,13 @@ import android.widget.Toast;
 import javax.inject.Inject;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 import ko2ic.dagger2.R;
 import ko2ic.dagger2.application.facade.WeatherFacade;
 import ko2ic.dagger2.infrastructure.repository.WeatherRepository;
 import ko2ic.dagger2.infrastructure.repository.event.common.RuntimeExceptionEvent;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends BaseActivity {
 
     @Inject
     WeatherFacade facade;
@@ -34,7 +32,8 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        ButterKnife.bind(this);
+        init();
+        getApplicationComponent().inject(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,18 +2,16 @@ package ko2ic.dagger2.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 import ko2ic.dagger2.R;
 import ko2ic.dagger2.infrastructure.repository.WeatherRepository;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Bind(R.id.button)
     Button button;
@@ -22,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        init();
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

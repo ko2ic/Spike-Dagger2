@@ -14,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import de.greenrobot.event.EventBus;
 import ko2ic.dagger2.domain.model.Weather;
@@ -26,8 +25,8 @@ public class WeatherRepository {
     private Context mContext;
 
     @Inject
-    public WeatherRepository(Provider<Context> provider) {
-        mContext = provider.get();
+    public WeatherRepository(Context context) {
+        mContext = context;
     }
 
     public void fetchWeather(String cityCode) {
