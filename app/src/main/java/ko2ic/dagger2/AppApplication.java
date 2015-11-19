@@ -2,9 +2,6 @@ package ko2ic.dagger2;
 
 import android.app.Application;
 
-import ko2ic.dagger2.application.AppLayerModule;
-import ko2ic.dagger2.infrastructure.InfraLayerModule;
-
 
 public class AppApplication extends Application {
 
@@ -18,7 +15,8 @@ public class AppApplication extends Application {
 
     private void initializeInjector() {
         applicationComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(this)).appLayerModule(new AppLayerModule()).infraLayerModule(new InfraLayerModule())
+                .appModule(new AppModule(this))
+               // .appModule(new AppModule(this)).appLayerModule(new AppLayerModule()).infraLayerModule(new InfraLayerModule())
                 .build();
     }
 
